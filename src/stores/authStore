@@ -1,0 +1,45 @@
+import { ref } from 'vue'
+import { defineStore } from 'pinia' // crea las variables globales
+import { auth, db } from '../firebase/config' // importa la configuración de firebase
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth'
+import { collection, addDoc } from 'firebase/firestore'
+
+export const useAuthStore = defineStore('auth', () => {
+  const user = ref<any | null>(null) // ref forma de dinamizar los datos
+  const loading = ref(true) // Se utiliza para mostrar el mensaje de "cargando..." mientras espera a que se cumpla la promesa
+
+  onAuthStateChanged(auth, (currentUser) => {
+    ;(user.value = currentUser), (loading.value = false)
+  })
+
+  const login = async (email: string, password: string) => {
+    const result = await signInWithEmailAndPassword(auth, email, password)
+    if (result.user) {
+      user.value = result.user
+    }
+  }
+
+  const logout = async () => {
+    await signOut(auth)
+    user.value = null
+  }
+
+  const register = async (name: string, email: string, password: string) => {
+    const result = await createUserWithEmailAndPassword(auth, email, password)
+    if (result.user) {
+      const newUser = {
+        name,
+        email,
+        role: 'USER',
+      }
+      await addDoc(collection(db, 'users'), newUser)
+    }
+  }
+
+  return { user, loading, login, logout, register }
+})
