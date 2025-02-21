@@ -1,33 +1,13 @@
 <script setup lang="ts">
+import img1 from '@/assets/img/card1Blog.png';
+import img2 from '@/assets/img/bodyHome.png';
+
+
 const icons = ['mdi-facebook', 'mdi-twitter', 'mdi-linkedin', 'mdi-instagram'];
 const links = ['About Us','Education','Opportunities','Blog',]
 </script>
 <template>
   <v-container fluid>
-  <!-- Navbar -->
-  <v-app-bar flat color="grey-lighten-4">
-    <v-container class="d-flex align-center">
-      <!-- Logo -->
-      <v-toolbar-title class="font-weight-bold">Atlantis</v-toolbar-title>
-
-      <!-- Espaciador -->
-      <v-spacer></v-spacer>
-
-      <!-- Links  -->
-      <v-btn text to="/about">About Us</v-btn>
-      <v-btn text to="/education">Education</v-btn>
-      <v-btn text to="/opportunities">Opportunities</v-btn>
-      <v-btn text to="/blog">Blog</v-btn>
-
-      <!-- Espaciador -->
-      <v-spacer></v-spacer>
-
-      <!-- Botones a la derecha -->
-      <v-btn variant="outlined" color="primary" to="/login">Login</v-btn>
-      <v-btn color="black" class="ml-2" to="/signup">Sign Up</v-btn>
-    </v-container>
-  </v-app-bar>
-
   <!-- Hero Section -->
 <v-container class="hero-section">
   <v-row align="center">
@@ -43,11 +23,11 @@ const links = ['About Us','Education','Opportunities','Blog',]
     </v-col>
 
     <!-- Columna Derecha - Imagen -->
-    <v-col cols="12" md="6" class="text-center">
+    <v-col cols="12" md="6" class="text-center pa-6">
       <v-img
-        src="https://media.istockphoto.com/id/1990444472/photo/scandinavian-style-cozy-living-room-interior.jpg?s=1024x1024&w=is&k=20&c=kHJB-lnK-XmClW7tcWCO68POsyd6H3v0RA5IWCEODb4="
+        :src="img1"
         alt="Real estate image"
-        class="hero-image"
+        class="hero-image rounded-xl"
         contain
       />
     </v-col>
@@ -63,11 +43,11 @@ const links = ['About Us','Education','Opportunities','Blog',]
       </v-row>
       <v-row align="center">
         <v-col cols="12" md="6">
-          <v-img src="https://via.placeholder.com/600x400" alt="Investment image" class="rounded-lg" />
+          <v-img :src="img2" alt="Investment image" class="rounded-lg" />
         </v-col>
         <v-col cols="12" md="6">
-          <v-list>
-            <v-list-item v-for="(item, index) in [
+          <v-list >
+            <v-list-item class="pa-6" v-for="(item, index) in [
               { title: 'Flexible investment structures', text: 'Our platform offers personalized support and a secure bridge to protect your capital.' },
               { title: 'Access and variety of projects', text: 'Our goal is to help you diversify and mitigate risks in your investment portfolio.' },
               { title: 'Technology and transparency', text: 'Our platform leverages technology to provide a seamless and transparent investment experience.' },
@@ -76,8 +56,8 @@ const links = ['About Us','Education','Opportunities','Blog',]
               <template v-slot:prepend>
                 <span class="text-primary font-weight-bold text-h6">{{ `0${index + 1}` }}</span>
               </template>
-              <v-list-item-title class="font-weight-bold">{{ item.title }}</v-list-item-title>
-              <v-list-item-subtitle>{{ item.text }}</v-list-item-subtitle>
+              <v-list-item-title class="font-weight-bold pa-2">{{ item.title }}</v-list-item-title>
+              <v-list-item-subtitle class="pa-4">{{ item.text }}</v-list-item-subtitle>
             </v-list-item>
           </v-list>
         </v-col>
@@ -148,7 +128,7 @@ const links = ['About Us','Education','Opportunities','Blog',]
   <v-col cols="12" sm="6" class="text-right">
     <v-textarea
       class="mx-2"
-      label="prepend-inner-icon"
+      label="your email"
       prepend-inner-icon="mdi-comment"
       rows="1"
     ></v-textarea>
