@@ -2,25 +2,19 @@
 </script>
 <template>
    <v-app>
-        <v-container fluid fill-height class="d-flex align-center justify-center">
+        <v-container fluid class=" fill-height d-flex align-center justify-center">
             <v-row no-gutters class="fill-height">
                 <v-col cols="12" md="6" class="d-none d-md-flex">
                     <v-img
-                        src="https://lbcdn.airpaz.com/hotelimages/2392884/mabuhay-beach-house-0fbed6361f8b16a342c625904d689242.jpg"    
+                        src="../../src/assets/img/login.png"
                         class="fill-height"
                         cover
                     >
                     </v-img>
                 </v-col>
-                <v-col cols="12" md="6" class="d-flex align-center justify-center">
+                <v-col cols="12" md="6" class="d-flex align-center justify-center fill-height">
                     <!--Formulario para Login-->
-                    <v-card class="elevation-12 pa-8" max-width="400">
-                        <v-progress-linear
-                            value="50"
-                            color="blue"
-                            height="4"
-                            class="mb-8"
-                        ></v-progress-linear>
+                    <v-card class="elevation-2 pa-8 fill-height d-flex flex-column align-center justify-center" width="800">
 
                         <v-card-title 
                             class="text-h5 mb-4"
@@ -103,5 +97,6 @@ export default {
 }
 .fill-height {
     height: 100vh;
+    width: 100%;
 }
 </style>
