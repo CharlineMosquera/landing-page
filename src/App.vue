@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
+import NabvarHome from '@/components/NabvarHome.vue'
 </script>
 
 <template>
   <v-app>
-    <Navbar />
-    <router-view />
-    <!-- Resto de la app -->
+    <NabvarHome />
+    <v-main>
+      <router-view />
+      <!-- Aquí se renderizan las páginas según la ruta -->
+    </v-main>
   </v-app>
 </template>
 

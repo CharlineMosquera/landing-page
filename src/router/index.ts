@@ -12,6 +12,12 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/blog',
+      name: 'Blog',
+      component: BlogView,
+    },
+    { path: '/blog/:id', name: 'BlogDetail', component: BlogDetail },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -23,12 +29,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView,
-
     },
     {
       path: '/register',
       name: 'register',
-      component: RegisterView
+      component: RegisterView,
     },
   ],
 })
